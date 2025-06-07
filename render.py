@@ -12,6 +12,7 @@ sections = re.findall(r"# (.*?)\n(.*?)(?=\n#|\Z)", content, re.DOTALL)
 
 output_dir = "site/images"
 os.makedirs(output_dir, exist_ok=True)
+font_bold = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size=28)
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size=28)
 
 img_tags = []
@@ -29,7 +30,7 @@ for i, (title, body) in enumerate(sections):
     img = Image.new("RGB", (800, img_height), color="#171717")
     draw = ImageDraw.Draw(img)
 
-    draw.text((20, 20), title, fill="white", font=font)
+    draw.text((20, 20), title, fill="white", font=font_bold)
     draw.text((20, 20 + line_height), wrapped_body, fill="white", font=font)
 
     img.save(full_path)
