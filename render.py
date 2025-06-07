@@ -3,7 +3,7 @@ import markdown
 import re
 import os
 
-with open("content.md") as f:
+with open("README.md") as f:
     content = f.read()
 
 sections = re.findall(r"# (.*?)\n(.*?)(?=\n#|\Z)", content, re.DOTALL)
