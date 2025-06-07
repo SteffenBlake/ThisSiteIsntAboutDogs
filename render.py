@@ -15,6 +15,9 @@ os.makedirs(output_dir, exist_ok=True)
 font_bold = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size=28)
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size=28)
 
+ascent, descent = font.getmetrics()
+line_height = ascent + descent
+
 img_tags = []
 for i, (title, body) in enumerate(sections):
     img_path = f"images/section_{i+1}.png"
@@ -22,7 +25,6 @@ for i, (title, body) in enumerate(sections):
 
     wrapped_body = textwrap.fill(body.strip(), width=50)
     lines = wrapped_body.count('\n') + 1
-    line_height = font.getsize("A")[1]
 
     # title counts as 1 line, plus body lines, plus padding
     img_height = 20 + line_height * (1 + lines) + 20
@@ -34,7 +36,7 @@ for i, (title, body) in enumerate(sections):
     draw.text((20, 20 + line_height), wrapped_body, fill="white", font=font)
 
     img.save(full_path)
-    img_tags.append(f'<img src="{img_path}" alt="Section {i+1}">')
+    img_tags.append(f'<img src="{img_path}" alt="A picture of a dog! Sorry screen readers">')
 
 # === Step 2: Convert DogContent.md to HTML ===
 with open("DogContent.md") as f:
