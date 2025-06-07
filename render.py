@@ -19,18 +19,18 @@ for i, (title, body) in enumerate(sections):
     img_path = f"images/section_{i+1}.png"
     full_path = os.path.join("site", img_path)
 
-    wrapped_body = textwrap.fill(body.strip(), width=80)
-    text = f"{title}\n{wrapped_body}"
+    wrapped_body = textwrap.fill(body.strip(), width=50)
+    lines = wrapped_body.count('\n') + 1
+    line_height = font.getsize("A")[1]
 
-    # Measure text height for dynamic image sizing
-    dummy_img = Image.new("RGB", (800, 10))
-    draw = ImageDraw.Draw(dummy_img)
-    bbox = draw.multiline_textbbox((20, 20), text, font=font)
-    img_height = bbox[3] + 20  # add some padding
+    # title counts as 1 line, plus body lines, plus padding
+    img_height = 20 + line_height * (1 + lines) + 20
 
     img = Image.new("RGB", (800, img_height), color="#171717")
     draw = ImageDraw.Draw(img)
-    draw.multiline_text((20, 20), text, fill="white", font=font)
+
+    draw.text((20, 20), title, fill="white", font=font)
+    draw.text((20, 20 + line_height), wrapped_body, fill="white", font=font)
 
     img.save(full_path)
     img_tags.append(f'<img src="{img_path}" alt="Section {i+1}">')
