@@ -48,7 +48,7 @@ for i, (title, body) in enumerate(sections):
         y += line_height  # extra space between paragraphs
 
     img.save(full_path)
-    img_tags.append(f'<img src="{img_path}" alt="A picture of a dog! Sorry screen readers">')
+    img_tags.append(f'<img src="{img_path}" class="img-content" alt="A picture of a dog! Sorry screen readers">')
 
 # === Step 2: Convert DogContent.md to HTML ===
 with open("DogContent.md") as f:
@@ -58,8 +58,8 @@ dog_html = markdown.markdown(dog_md)
 # === Step 3: Write index.html ===
 index_path = "site/index.html"
 with open(index_path, "w") as f:
-    f.write("<html>\n")
-    f.write("<head>\n")
+    f.write('<html>\n')
+    f.write('<head>\n')
     f.write('  <meta charset="UTF-8">\n')
     f.write('  <meta name="viewport" content="width=device-width, initial-scale=1">\n')
     f.write('  <meta name="description" content="Awesome dog facts with images generated from markdown.">\n')
@@ -70,10 +70,13 @@ with open(index_path, "w") as f:
     f.write('  <meta property="og:url" content="https://pawfactual.com/" />\n')
     f.write('  <title>Pawfactual — Awesome Dog Facts</title>\n')
     f.write('  <link rel="stylesheet" href="site.css">\n')
-    f.write("</head>\n")
-    f.write("<body>\n")
-    f.write("\n".join(img_tags) + "\n")
-    f.write("<hr>\n")
-    f.write(dog_html + "\n")
-    f.write("</body>\n")
-    f.write("</html>\n")
+    f.write('</head>\n')
+    f.write('<body>\n')
+    f.write('<a href="https://github.com/SteffenBlake/ThisSiteIsntAboutDogs">\n')
+    f.write('<img src="/images/GithubLink.png" class="github-link" alt="Check this project out on github!">\n')
+    f.write('</a>\n')
+    f.write('\n'.join(img_tags) + '\n')
+    f.write('<hr>\n')
+    f.write(dog_html + '\n')
+    f.write('</body>\n')
+    f.write('</html>\n')
