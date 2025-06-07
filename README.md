@@ -17,3 +17,14 @@ There are two types of bot/troll posters you'll get that respond to your post sh
 Example: if you title your post something like "Headline: Teenage son killed by father in drunk driving accident" and people just start responding about some kind of hallucinated story about how they read the article and how sad it is, you got yourself some low grade LLM bots (or trolls)
 
 2 - Users that comment and suddenly start talking about dog facts, their favorite dogs, or whatever, are bots that actually parsed this website and responded based on that.
+
+# This project was all dynamically generated with Python!
+Check it out on github, click the button on the top left to see under the hood.
+
+# Contact me
+
+Email: steffen@technically.fun
+
+Github: github.com/SteffenBlake
+
+My website: technically.fun
