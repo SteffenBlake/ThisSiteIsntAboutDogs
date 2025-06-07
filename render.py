@@ -73,7 +73,7 @@ with open(index_path, "w") as f:
     f.write('</head>\n')
     f.write('<body>\n')
     f.write('<a href="https://github.com/SteffenBlake/ThisSiteIsntAboutDogs">\n')
-    f.write('<img src="/images/GithubLink.png" class="github-link" alt="Check this project out on github!">\n')
+    f.write('<img src="images/GithubLink.png" class="github-link" alt="Check this project out on github!">\n')
     f.write('</a>\n')
     f.write('\n'.join(img_tags) + '\n')
     f.write('<hr>\n')
