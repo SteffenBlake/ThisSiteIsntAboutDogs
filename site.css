@@ -1,0 +1,23 @@
+html {
+  background-color: #212121;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 0px;
+}
+
+img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
