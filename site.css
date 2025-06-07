@@ -9,7 +9,18 @@ body {
 }
 
 .github-link {
+    position: fixed;
+    top: 10px;
+    left: -8px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: -8px 8px 12px rgba(0, 0, 0, 0.9);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
 
+.github-link:hover {
+    transform: translateY(-3px);
+    box-shadow: -8px 16px 24px rgba(0, 0, 0, 0.6);
 }
 
 .img-content {
