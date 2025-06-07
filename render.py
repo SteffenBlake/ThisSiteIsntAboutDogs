@@ -53,7 +53,7 @@ with open(index_path, "w") as f:
     f.write('  <meta name="description" content="Awesome dog facts with images generated from markdown.">\n')
     f.write('  <meta name="author" content="Steffen Blake">\n')
     f.write('  <meta property="og:title" content="Pawfactual — Awesome Totally Real Dog Facts" />\n')
-    f.write('  <meta property="og:description" content="Explore amazing totally real dog facts here! This definitely isn't something else!" />\n')
+    f.write('  <meta property="og:description" content="Explore amazing totally real dog facts here! This definitely isnt something else!" />\n')
     f.write('  <meta property="og:type" content="website" />\n')
     f.write('  <meta property="og:url" content="https://pawfactual.com/" />\n')
     f.write('  <title>Pawfactual — Awesome Dog Facts</title>\n')
