@@ -12,5 +12,8 @@ Instead, if you open up the html of this website, you'll see at the bottom after
 # How to catch the bots
 There are two types of bot/troll posters you'll get that respond to your post sharing this link.
 
-1. Users that comment and respond based on your fake title, effectively demonstrating they didnt even read the website at all, and instead simply just took the title at face value and started spouting off a bunch of hallucinated garbage that has nothing to do with anything on this site. IE if you title your post something like "Headline: Teenage son killed by father in drunk driving accident" and people just start responding about some kind of hallucinated story about how they read the article and how sad it is, you got yourself some low grade LLM bots (or trolls)
-2. Users that comment and suddenly start talking about dog facts, their favorite dogs, or whatever, are bots that actually parsed this website and responded based on that.
+1 - Users that comment and respond based on your fake title, effectively demonstrating they didnt even read the website at all, and instead simply just took the title at face value and started spouting off a bunch of hallucinated garbage that has nothing to do with anything on this site.
+
+Example: if you title your post something like "Headline: Teenage son killed by father in drunk driving accident" and people just start responding about some kind of hallucinated story about how they read the article and how sad it is, you got yourself some low grade LLM bots (or trolls)
+
+2 - Users that comment and suddenly start talking about dog facts, their favorite dogs, or whatever, are bots that actually parsed this website and responded based on that.
