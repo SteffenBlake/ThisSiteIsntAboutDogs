@@ -23,17 +23,29 @@ for i, (title, body) in enumerate(sections):
     img_path = f"images/section_{i+1}.png"
     full_path = os.path.join("site", img_path)
 
-    wrapped_body = textwrap.fill(body.strip(), width=50)
-    lines = wrapped_body.count('\n') + 1
+    # Preserve paragraph breaks, wrap each paragraph at 50 chars
+    paragraphs = body.strip().split('\n\n')
+    wrapped_paragraphs = [textwrap.fill(p.replace('\n', ' '), width=50) for p in paragraphs]
 
-    # title counts as 1 line, plus body lines, plus padding
-    img_height = 20 + line_height * (1 + lines) + 20
+    # Count total lines to calculate height
+    total_lines = sum(len(p.split('\n')) for p in wrapped_paragraphs)
+    # Add spacing between paragraphs (1 extra line per paragraph except last)
+    total_lines += len(wrapped_paragraphs) - 1
+
+    # Title is 1 line, plus body lines, plus padding
+    img_height = 20 + line_height * (1 + total_lines) + 20
 
     img = Image.new("RGB", (800, img_height), color="#171717")
     draw = ImageDraw.Draw(img)
 
     draw.text((20, 20), title, fill="white", font=font_bold)
-    draw.text((20, 20 + line_height), wrapped_body, fill="white", font=font)
+
+    y = 20 + line_height  # start below title
+    for p in wrapped_paragraphs:
+        for line in p.split('\n'):
+            draw.text((20, y), line, fill="white", font=font)
+            y += line_height
+        y += line_height  # extra space between paragraphs
 
     img.save(full_path)
     img_tags.append(f'<img src="{img_path}" alt="A picture of a dog! Sorry screen readers">')
@@ -65,4 +77,3 @@ with open(index_path, "w") as f:
     f.write(dog_html + "\n")
     f.write("</body>\n")
     f.write("</html>\n")
-
