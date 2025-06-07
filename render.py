@@ -3,6 +3,7 @@ import re
 import os
 import markdown
 import textwrap
+import time
 
 # === Step 1: Parse README.md and render images ===
 with open("README.md") as f:
@@ -14,6 +15,8 @@ output_dir = "site/images"
 os.makedirs(output_dir, exist_ok=True)
 font_bold = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size=28)
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size=28)
+
+nonce = int(time.time())
 
 ascent, descent = font.getmetrics()
 line_height = ascent + descent
@@ -48,7 +51,8 @@ for i, (title, body) in enumerate(sections):
         y += line_height  # extra space between paragraphs
 
     img.save(full_path)
-    img_tags.append(f'<img src="{img_path}" class="img-content" alt="A picture of a dog! Sorry screen readers">')
+    # Cache busting images when we re-render new builds
+    img_tags.append(f'<img src="{img_path}?v={nonce}" class="img-content" alt="A picture of a dog! Sorry screen readers">')
 
 # === Step 2: Convert DogContent.md to HTML ===
 with open("DogContent.md") as f:
@@ -69,11 +73,11 @@ with open(index_path, "w") as f:
     f.write('  <meta property="og:type" content="website" />\n')
     f.write('  <meta property="og:url" content="https://pawfactual.com/" />\n')
     f.write('  <title>Pawfactual — Awesome Dog Facts</title>\n')
-    f.write('  <link rel="stylesheet" href="site.css">\n')
+    f.write(f'  <link rel="stylesheet" href="site.css?v={nonce}">\n')
     f.write('</head>\n')
     f.write('<body>\n')
     f.write('<a href="https://github.com/SteffenBlake/ThisSiteIsntAboutDogs">\n')
-    f.write('<img src="images/GithubLink.png" class="github-link" alt="Check this project out on github!">\n')
+    f.write(f'<img src="images/GithubLink.png?v={nonce}" class="github-link" alt="Check this project out on github!">\n')
     f.write('</a>\n')
     f.write('\n'.join(img_tags) + '\n')
     f.write('<hr>\n')
