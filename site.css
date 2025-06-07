@@ -1,0 +1,43 @@
+html {
+  background-color: #212121;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 0px;
+}
+
+.github-link {
+    position: fixed;
+    top: 10px;
+    left: -1vw;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: -8px 8px 12px rgba(0, 0, 0, 0.9);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    max-width: 15vw;
+}
+
+.github-link:hover {
+    transform: translateY(-3px);
+    box-shadow: -8px 16px 24px rgba(0, 0, 0, 0.6);
+}
+
+.img-content:first-of-type {
+    margin-top: 50px;
+}
+
+.img-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
