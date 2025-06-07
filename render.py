@@ -76,7 +76,7 @@ with open(index_path, "w") as f:
     f.write(f'  <link rel="stylesheet" href="site.css?v={nonce}">\n')
     f.write('</head>\n')
     f.write('<body>\n')
-    f.write('<a href="https://github.com/SteffenBlake/ThisSiteIsntAboutDogs">\n')
+    f.write('<a href="https://github.com/SteffenBlake/ThisSiteIsntAboutDogs" target="_blank" rel="noopener noreferrer">\n')
     f.write(f'<img src="images/GithubLink.png?v={nonce}" class="github-link" alt="Check this project out on github!">\n')
     f.write('</a>\n')
     f.write('\n'.join(img_tags) + '\n')
