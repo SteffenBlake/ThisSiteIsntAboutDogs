@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import re
 import os
 import markdown
+import textwrap
 
 # === Step 1: Parse README.md and render images ===
 with open("README.md") as f:
@@ -11,16 +12,17 @@ sections = re.findall(r"# (.*?)\n(.*?)(?=\n#|\Z)", content, re.DOTALL)
 
 output_dir = "site/images"
 os.makedirs(output_dir, exist_ok=True)
-font = ImageFont.load_default()
+font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size=28)
 
 img_tags = []
 for i, (title, body) in enumerate(sections):
     img_path = f"images/section_{i+1}.png"
     full_path = os.path.join("site", img_path)
-    img = Image.new("RGB", (800, 400), color="white")
+    img = Image.new("RGB", (800, 400), color="#171717")
     draw = ImageDraw.Draw(img)
-    draw.text((20, 20), title, fill="black", font=font)
-    draw.text((20, 60), body.strip(), fill="black", font=font)
+    wrapped_body = textwrap.fill(body.strip(), width=80)
+    draw.text((20, 20), title, fill="white", font=font)
+    draw.text((20, 60), wrapped_body, fill="white", font=font)
     img.save(full_path)
     img_tags.append(f'<img src="{img_path}" alt="Section {i+1}">')
 
