@@ -9,12 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - run: pip install Pillow markdown
-      - run: python render.py
+          
+      - name: Install dependencies
+        run: pip install Pillow markdown
+        
+      - name: Render html and images
+        run: python render.py
+        
+      - name: Copy css file over
+        run: cp site.css site/
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
